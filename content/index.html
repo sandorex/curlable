@@ -1,7 +1,15 @@
----
-layout: layouts/curl-redirect.njk
-url: "/index2/"
----
+{%- include "html_prefix.njk" -%}
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <p>This is the web version!</p>
+  </body>
+</html>
+
+{%- include "html_suffix.njk" -%}
 {{ term.setaf2 }}This is the curl version!{{ term.setaf9 }}
 
 {{ term.setaf1 }}Kinda awesome right?{{ term.setaf9 }}

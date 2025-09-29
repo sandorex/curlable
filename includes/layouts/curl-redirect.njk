@@ -1,9 +1,0 @@
-{# basically saving the screen before printing all this garbage and then restoring it #}
-{{- term.smcup -}}
-<meta charset="utf-8" />{{- "" -}}
-<meta http-equiv="refresh" content="0; url={{ url }}" />{{- "" -}}
-<link rel="canonical" href="{{ url }}">{{- "" -}}
-<style>:root { color: white; }</style>{{- "" -}}
-<p style="color:black;">You should've been redirected, if not <a href="{{ url }}">click here</a></p>
-{{- term.rmcup -}}
-{{ content | safe }}

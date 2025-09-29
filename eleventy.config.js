@@ -4,32 +4,32 @@ import { minify } from "terser";
 // treat watch / serve modes as development modes
 const PROD_MODE = process.env.ELEVENTY_RUN_MODE === "build";
 
-function minify_css(code) {
-    const clean_css = new CleanCSS({});
-    const result = clean_css.minify(code);
-    if (result === undefined) {
-        console.error("Could not minify CSS");
-        return null;
-    }
+// function minify_css(code) {
+//     const clean_css = new CleanCSS({});
+//     const result = clean_css.minify(code);
+//     if (result === undefined) {
+//         console.error("Could not minify CSS");
+//         return null;
+//     }
 
-    return result.styles;
-}
+//     return result.styles;
+// }
 
-async function minify_js(code) {
-    try {
-        const obj = await minify(code, {
-            sourceMap: {
-                // always inline the sourcemap
-                url: "inline"
-            }
-        });
+// async function minify_js(code) {
+//     try {
+//         const obj = await minify(code, {
+//             sourceMap: {
+//                 // always inline the sourcemap
+//                 url: "inline"
+//             }
+//         });
 
-        return obj.code;
-    } catch (err) {
-        console.error("Terser error: ", err);
-        return null;
-    }
-}
+//         return obj.code;
+//     } catch (err) {
+//         console.error("Terser error: ", err);
+//         return null;
+//     }
+// }
 
 export default function(eleventyConfig) {
     // by default it does not respond to all changes which seems weird to me?
@@ -63,34 +63,37 @@ export default function(eleventyConfig) {
     eleventyConfig.addGlobalData("term.setab9", "\x1b[49m");
     eleventyConfig.addGlobalData("term.clear", "\x1b[H\x1b[2J");
 
+    eleventyConfig.addGlobalData("term.ed", "\x1b[J");
+    eleventyConfig.addGlobalData("term.cuu1", "\x1b[A");
     eleventyConfig.addGlobalData("term.smcup", "\x1b7\x1b[?47h");
     eleventyConfig.addGlobalData("term.rmcup", "\x1b[2J\x1b[?47l\x1b8");
 
-    eleventyConfig.addBundle("css", {
-        toFileDirectory: "dist",
-        transforms: [
-            function(code) {
-                if (PROD_MODE) {
-                    return minify_css(code);
-                }
+    /* autocompletes element tags so breaks the site */
+    // eleventyConfig.addBundle("css", {
+    //     toFileDirectory: "dist",
+    //     transforms: [
+    //         // function(code) {
+    //         //     if (PROD_MODE) {
+    //         //         return minify_css(code);
+    //         //     }
 
-                return code;
-            }
-        ]
-    });
+    //         //     return code;
+    //         // }
+    //     ]
+    // });
 
-    eleventyConfig.addBundle("js", {
-        toFileDirectory: "dist",
-        transforms: [
-            async function(code) {
-                if (PROD_MODE) {
-                    return minify_js(code);
-                }
+    // eleventyConfig.addBundle("js", {
+    //     toFileDirectory: "dist",
+    //     transforms: [
+    //         // async function(code) {
+    //         //     if (PROD_MODE) {
+    //         //         return minify_js(code);
+    //         //     }
 
-                return code;
-            }
-        ]
-    });
+    //         //     return code;
+    //         // }
+    //     ]
+    // });
 
     eleventyConfig.addFilter("getKeys",
         function(object) {
