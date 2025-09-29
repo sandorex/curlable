@@ -64,6 +64,7 @@ export default function(eleventyConfig) {
     eleventyConfig.addGlobalData("term.clear", "\x1b[H\x1b[2J");
 
     eleventyConfig.addGlobalData("term.ed", "\x1b[J");
+    eleventyConfig.addGlobalData("term.el1", "\x1b[K");
     eleventyConfig.addGlobalData("term.cuu1", "\x1b[A");
     eleventyConfig.addGlobalData("term.smcup", "\x1b7\x1b[?47h");
     eleventyConfig.addGlobalData("term.rmcup", "\x1b[2J\x1b[?47l\x1b8");
