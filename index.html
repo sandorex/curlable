@@ -1,13 +1,84 @@
 <!--
-[A7[?47h-->
+[A[K7[?47h
+-->
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        color: #51f108;
+        background-color: black;
+      }
+    </style>
   </head>
   <body>
-    <p>This is the web version!</p>
+    <h2>Example CURL-able website</h2>
+
+    <p>This is the web version use following command to see the CURL version</p>
+    <code>$ curl https://sandorex.github.io/curlable/</code>
+
+    <br><br><br>
+
+    <p><i>Enjoy this random meme from reddit</i></p>
+    <img id="meme" style="width: 300px;"/>
+    <script>
+      const meme = document.getElementById("meme");
+      let loading = false;
+
+      function memeGen() {
+        if (loading)
+          return;
+
+        loading = true;
+
+        // add cooldown to prevent spamming the API
+        setTimeout(() => { loading = false; }, 3000);
+
+        // fetch a new meme
+        fetch('https://meme-api.com/gimme')
+          .then(response => response.json())
+          .then(json => {
+            // i do not want to get my website banned for dumb reason
+            if (json['nsfw'] !== false)
+              return;
+
+            meme.setAttribute('src', json['url']);
+          });
+      }
+
+      // this works on both mobile and desktop!
+      meme.addEventListener("dblclick", event => {
+        memeGen();
+        event.preventDefault();
+      });
+
+      // load at start
+      memeGen();
+    </script>
   </body>
 </html>
-<!--[2J[?47l8[32mThis is the curl version![39m
 
-[31mKinda awesome right?[39m
+
+<!--[2J[?47l8
+[36mExample CURL-able website[39m
+
+Full repository available at [31mhttps://github.com/sandorex/curlable[39m
+⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢻⣿⡗⢶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣄
+⠀⢻⣇⠀⠈⠙⠳⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠶⠛⠋⣹⣿⡿
+⠀⠀⠹⣆⠀⠀⠀⠀⠙⢷⣄⣀⣀⣀⣤⣤⣤⣄⣀⣴⠞⠋⠉⠀⠀⠀⢀⣿⡟⠁
+⠀⠀⠀⠙⢷⡀⠀⠀⠀⠀⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠋⠀⠀
+⠀⠀⠀⠀⠈⠻⡶⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣠⡾⠋⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣼⠃⠀⢠⠒⣆⠀⠀⠀⠀⠀⠀⢠⢲⣄⠀⠀⠀⢻⣆⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢰⡏⠀⠀⠈⠛⠋⠀⢀⣀⡀⠀⠀⠘⠛⠃⠀⠀⠀⠈⣿⡀⠀⠀⠀⠀
+⠀⠀⠀⠀⣾⡟⠛⢳⠀⠀⠀⠀⠀⣉⣀⠀⠀⠀⠀⣰⢛⠙⣶⠀⢹⣇⠀⠀⠀⠀
+⠀⠀⠀⠀⢿⡗⠛⠋⠀⠀⠀⠀⣾⠋⠀⢱⠀⠀⠀⠘⠲⠗⠋⠀⠈⣿⠀⠀⠀⠀
+⠀⠀⠀⠀⠘⢷⡀⠀⠀⠀⠀⠀⠈⠓⠒⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡇⠀⠀⠀
+⠀⠀⠀⠀⠀⠈⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣧⠀⠀⠀
+⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⠀⠀⠀
