@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Example of a curlable static website",
   "scripts": {
+    "gh-pages": "npx @11ty/eleventy --pathprefix=/curlable/",
     "serve": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy",
     "clean": "rm -rf _site/"
@@ -12,8 +13,8 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@11ty/eleventy": "^3.1.2",
-    "clean-css": "^5.3.3",
-    "terser": "^5.43.1"
+    "@11ty/eleventy": "3.1.2",
+    "clean-css": "5.3.3",
+    "terser": "5.43.1"
   }
 }

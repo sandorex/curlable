@@ -68,33 +68,6 @@ export default function(eleventyConfig) {
     eleventyConfig.addGlobalData("term.smcup", "\x1b7\x1b[?47h");
     eleventyConfig.addGlobalData("term.rmcup", "\x1b[2J\x1b[?47l\x1b8");
 
-    /* autocompletes element tags so breaks the site */
-    // eleventyConfig.addBundle("css", {
-    //     toFileDirectory: "dist",
-    //     transforms: [
-    //         // function(code) {
-    //         //     if (PROD_MODE) {
-    //         //         return minify_css(code);
-    //         //     }
-
-    //         //     return code;
-    //         // }
-    //     ]
-    // });
-
-    // eleventyConfig.addBundle("js", {
-    //     toFileDirectory: "dist",
-    //     transforms: [
-    //         // async function(code) {
-    //         //     if (PROD_MODE) {
-    //         //         return minify_js(code);
-    //         //     }
-
-    //         //     return code;
-    //         // }
-    //     ]
-    // });
-
     eleventyConfig.addFilter("getKeys",
         function(object) {
             var keys;
